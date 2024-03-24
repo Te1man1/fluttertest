@@ -1,16 +1,12 @@
-# untitled2
+# тестовый проект на flutter
 
-A new Flutter project.
+-При запуске отображается экран авторизации, необходимо ввести логин и пароль. Если кредиты совпадают с логином "test" и паролем "test", переход на главный экран (MainFrame).
+Если введенные логин и пароль неверны, отображается сообщение об ошибке.
 
-## Getting Started
+-На главном экране (MainFrame) происходит загрузка данных с удаленного сервера. Для этого используется пакет http, который выполняет GET-запрос к адресу "https://jsonplaceholder.typicode.com/posts". Полученные данные представляют собой список элементов.
 
-This project is a starting point for a Flutter application.
+-Каждый элемент списка (Items) содержит заголовок (title), идентификатор пользователя (userId), идентификатор элемента (id) и содержимое (body).
 
-A few resources to get you started if this is your first Flutter project:
+-При нажатии на элемент списка происходит анимация масштабирования элемента.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+-При смахивании элемента влево или вправо отображается фоновое цветное поле с надписью "Delete". При выполнении смахивания элемента происходит его удаление из списка (только локально, без запросов на удаление)
