@@ -11,7 +11,7 @@ class MainFrame extends StatefulWidget {
 }
 
 class _MainFrameState extends State<MainFrame> {
-  List<Map<String, dynamic>> _data = [];
+  List<Map<String, dynamic>> _data = []; // Список данных
 
 // Получение данных c сервера и сохранение их в переменной _data
   Future<void> getData() async {
@@ -19,17 +19,20 @@ class _MainFrameState extends State<MainFrame> {
     await http.get(Uri.parse('https://jsonplaceholder.typicode.com/posts'));
 
     if (response.statusCode == 200) {
-      final jsonData = json.decode(response.body);
+      final jsonData = json.decode(response.body); // Декодирование данных из JSON
       setState(() {
-        _data = List<Map<String, dynamic>>.from(jsonData);
+        _data = List<Map<String, dynamic>>.from(jsonData); // Обновление состояния _data
       });
+    } else {
+      // Если запрос не удался
+      print('Failed to fetch data');
     }
   }
 
   @override
   void initState() {
     super.initState();
-    getData();// Вызов метода для получения данных при инициализации экрана
+    getData();// Вызов метода для получения данных при инициализации состояния
   }
 
   @override
@@ -47,6 +50,7 @@ class _MainFrameState extends State<MainFrame> {
             child: Dismissible(
               key: Key(item['id'].toString()), // ключ для элемента списка
               onDismissed: (direction) {
+                // Обработчик свайпа элемента
                 setState(() {
                   _data.removeAt(index); // Удаление элемента из списка при его свайпе
                 });
